@@ -20,11 +20,9 @@ export class CustomLabelDirective implements OnInit {
   }
 
   constructor(private el: ElementRef<HTMLElement>) {
-    console.log(el);
     this.htmlElement = el;
   }
   ngOnInit(): void {
-    console.log('oninit');
   }
 
   setStyle(): void {
@@ -46,11 +44,20 @@ export class CustomLabelDirective implements OnInit {
       const min = this._errors!['minlength']['requiredLength'];
       const current = this._errors!['minlength']['actualLength'];
 
+<<<<<<< HEAD
       this.htmlElement.nativeElement.innerText = `Minimo ${current}/${min} caracteres ;`
       return;
     }
     if (errors.includes('email')) {
       this.htmlElement.nativeElement.innerText = 'Este campo necesita dominio de correo';
+=======
+      this.htmlElement.nativeElement.innerText = `Minimo ${current}/${min} caracteres ;`;
+      return;
+    }
+    if (errors.includes('email')) {
+      this.htmlElement.nativeElement.innerText =
+        'Este campo necesita dominio de correo';
+>>>>>>> fe460dd693c7dac8571e20e7247c59478ceacbdb
       return;
     }
   }

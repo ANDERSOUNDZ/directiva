@@ -45,7 +45,6 @@ export class CustomLabelDirective implements OnInit {
       const current = this._errors!['minlength']['actualLength'];
 
 <<<<<<< HEAD
-<<<<<<< HEAD
       this.htmlElement.nativeElement.innerText = `Minimo ${current}/${min} caracteres ;`
       return;
     }
@@ -59,14 +58,6 @@ export class CustomLabelDirective implements OnInit {
       this.htmlElement.nativeElement.innerText =
         'Este campo necesita dominio de correo';
 >>>>>>> f3471c0 (Agregando cambios a la directiva desde dev)
-=======
-      this.htmlElement.nativeElement.innerText = `Minimo ${current}/${min} caracteres ;`;
-      return;
-    }
-    if (errors.includes('email')) {
-      this.htmlElement.nativeElement.innerText =
-        'Este campo necesita dominio de correo';
->>>>>>> f3471c0ed4e07f53fbe00a5a98dd698f48bbacf5
       return;
     }
   }

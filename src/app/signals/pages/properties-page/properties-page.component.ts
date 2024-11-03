@@ -1,4 +1,11 @@
-import { Component, computed, signal } from '@angular/core';
+import {
+  Component,
+  computed,
+  effect,
+  OnDestroy,
+  OnInit,
+  signal,
+} from '@angular/core';
 import { User } from '../../interfaces/userRequest.interface';
 
 @Component({
@@ -6,7 +13,8 @@ import { User } from '../../interfaces/userRequest.interface';
   templateUrl: './properties-page.component.html',
   styleUrl: './properties-page.component.css',
 })
-export class PropertiesPageComponent {
+export class PropertiesPageComponent implements OnDestroy, OnInit {
+  public counter = signal(10);
   public user = signal<User>({
     id: 2,
     email: 'janet.weaver@reqres.in',
@@ -17,6 +25,26 @@ export class PropertiesPageComponent {
   public fullName = computed(
     () => `${this.user().first_name} ${this.user().last_name}`
   );
+  public usedChangeEffect = effect(() => {
+    console.log(
+      `${this.user().first_name} ${this.user().last_name} - ${this.counter()}`
+    );
+  });
+
+  ngOnInit(): void {
+    /* setInterval(() => {
+      this.counter.update((current) => current + 1);
+    }),
+      1000; */
+    //if (this.counter() === 15) this.usedChangeEffect.destroy();
+  }
+  ngOnDestroy(): void {
+    throw new Error('Method not implemented.');
+  }
+
+  increaseBy(value: number) {
+    this.counter.update((current) => current + value);
+  }
   onFieldUpdated(field: keyof User, value: string) {
     /* this.user.set({
       ...this.user(),
